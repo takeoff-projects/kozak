@@ -22,7 +22,7 @@ resource "google_cloud_run_service" "run_service" {
   template {
     spec {
       containers {
-        image = "gcr.io/roi-takeoff-user25/go-pets:v1.0"
+        image = "gcr.io/roi-takeoff-user25/go-pets:v2.0"
         env {
           name = "GOOGLE_CLOUD_PROJECT"
           value = "roi-takeoff-user25"

@@ -18,3 +18,4 @@ tmp/
 .terraform/
 *.hcl
 *.tfstate
+*.backup
