@@ -1,5 +1,6 @@
-terraform init && terraform apply -auto-approve
+terraform init 
+terraform plan -out plan.tfplan
+terraform apply plan.tfplan -auto-approve
 
-gcloud config set project roi-takeoff-user25
 gcloud endpoints services deploy openapi-run.yaml
 

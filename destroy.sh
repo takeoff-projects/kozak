@@ -1,0 +1,2 @@
+terraform destroy plan.tfplan
+
