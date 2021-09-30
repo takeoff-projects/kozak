@@ -1,0 +1,45 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{{template "layout" .}}
+
+{{define "content"}}
+<style>
+    input{
+        width: 300px;
+        height: 60px;
+        padding: 15px;
+        margin: 5px;
+        border-radius: 1px;
+        border: 1px solid #ccc;
+    }
+</style>
+<center>
+    <h1 style="padding: 15px;">{{.PageTitle}}</h1>
+    <div class="container">
+
+        <input id="Owner" type="text" name="Owner" placeholder="Owner name:"><br>
+
+        <input id="petName" type="text" name="petName" placeholder="Pet name:"><br>
+
+        <input id="image" type="text" name="image" placeholder="Image url:"><br>
+
+        <input id="submit" type="button" name="Add" value="Add">
+    </div>
+</center>
+
+<script type="text/javascript">
+    $('#submit').on('click', function(e) {
+        var xhr = new XMLHttpRequest();
+        console.log($("#message").val());
+        xhr.open("POST", "/api/add", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            petName: $("#petName").val(),
+            image: $("#image").val(),
+            owner: $("#Owner").val()
+        }));
+        $("#petName").val("");
+        $("#Owner").val("");
+        $("#image").val("");
+    })
+</script>
+{{end}}

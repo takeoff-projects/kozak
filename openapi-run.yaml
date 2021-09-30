@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  title: Cloud Endpoints + Cloud Run
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0
+host: app-b7b6w5moka-uc.a.run.app
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://app-b7b6w5moka-uc.a.run.app/
+  protocol: h2
+paths:
+  /api/add:
+    post:
+      operationId: add-pet
+      summary: Add pet
+      parameters:
+        - in: body
+          name: pet
+          description: pet
+          schema:
+            type: object
+            required:
+              - petName
+              - image
+              - owner
+            properties:
+              petName:
+                type: string
+              image:
+                type: string
+              owner:
+                type: string
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /api/delete:
+    post:
+      operationId: delete-pet
+      summary: Delete pet
+      parameters:
+        - in: body
+          name: delete
+          description: petId to delete
+          schema:
+            type: object
+            required:
+              - petId
+            properties:
+              petId:
+                type: string
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
